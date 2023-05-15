@@ -21,12 +21,15 @@ var _ codegen.LatestVersion = codegen.Version[[0][10]struct{}]("You used 'weaver
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &T{}
-var _ T = struct {
+
+type __is_T[T ~struct {
 	weaver.AutoMarshal
 	CurrencyCode string "json:\"currencyCode\""
 	Units        int64  "json:\"units\""
 	Nanos        int32  "json:\"nanos\""
-}{}
+}] struct{}
+
+var _ __is_T[T]
 
 func (x *T) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

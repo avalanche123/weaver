@@ -24,14 +24,17 @@ var _ codegen.LatestVersion = codegen.Version[[0][10]struct{}]("You used 'weaver
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &Order{}
-var _ Order = struct {
+
+type __is_Order[T ~struct {
 	weaver.AutoMarshal
 	OrderID            string
 	ShippingTrackingID string
 	ShippingCost       money.T
 	ShippingAddress    shippingservice.Address
 	Items              []OrderItem
-}{}
+}] struct{}
+
+var _ __is_Order[Order]
 
 func (x *Order) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -79,11 +82,14 @@ func serviceweaver_dec_slice_OrderItem_2b9377cb(dec *codegen.Decoder) []OrderIte
 }
 
 var _ codegen.AutoMarshal = &OrderItem{}
-var _ OrderItem = struct {
+
+type __is_OrderItem[T ~struct {
 	weaver.AutoMarshal
 	Item cartservice.CartItem
 	Cost money.T
-}{}
+}] struct{}
+
+var _ __is_OrderItem[OrderItem]
 
 func (x *OrderItem) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

@@ -175,14 +175,17 @@ func (s t_server_stub) placeOrder(ctx context.Context, args []byte) (res []byte,
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &PlaceOrderRequest{}
-var _ PlaceOrderRequest = struct {
+
+type __is_PlaceOrderRequest[T ~struct {
 	weaver.AutoMarshal
 	UserID       string
 	UserCurrency string
 	Address      shippingservice.Address
 	Email        string
 	CreditCard   paymentservice.CreditCardInfo
-}{}
+}] struct{}
+
+var _ __is_PlaceOrderRequest[PlaceOrderRequest]
 
 func (x *PlaceOrderRequest) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

@@ -369,7 +369,8 @@ func (s t_server_stub) searchProducts(ctx context.Context, args []byte) (res []b
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &Product{}
-var _ Product = struct {
+
+type __is_Product[T ~struct {
 	weaver.AutoMarshal
 	ID          string   "json:\"id\""
 	Name        string   "json:\"name\""
@@ -377,7 +378,9 @@ var _ Product = struct {
 	Picture     string   "json:\"picture\""
 	PriceUSD    money.T  "json:\"priceUsd\""
 	Categories  []string "json:\"categories\""
-}{}
+}] struct{}
+
+var _ __is_Product[Product]
 
 func (x *Product) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
