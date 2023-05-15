@@ -79,10 +79,10 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &scaler{}
-var _ weaver.Instance = &localCache{}
-var _ weaver.Instance = &server{}
-var _ weaver.Instance = &sqlStore{}
+var _ weaver.InstanceOf[ImageScaler] = &scaler{}
+var _ weaver.InstanceOf[LocalCache] = &localCache{}
+var _ weaver.InstanceOf[weaver.Main] = &server{}
+var _ weaver.InstanceOf[SQLStore] = &sqlStore{}
 
 // Local stub implementations.
 

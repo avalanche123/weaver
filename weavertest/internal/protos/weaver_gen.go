@@ -34,7 +34,7 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &impl{}
+var _ weaver.InstanceOf[PingPonger] = &impl{}
 
 // Local stub implementations.
 

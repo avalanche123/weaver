@@ -61,9 +61,9 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &errer{}
-var _ weaver.Instance = &failer{}
-var _ weaver.Instance = &pointer{}
+var _ weaver.InstanceOf[Errer] = &errer{}
+var _ weaver.InstanceOf[Failer] = &failer{}
+var _ weaver.InstanceOf[Pointer] = &pointer{}
 
 // Local stub implementations.
 

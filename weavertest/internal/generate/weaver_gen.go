@@ -34,7 +34,7 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &impl{}
+var _ weaver.InstanceOf[testApp] = &impl{}
 
 // Local stub implementations.
 

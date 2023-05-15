@@ -62,10 +62,10 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &a{}
-var _ weaver.Instance = &b{}
-var _ weaver.Instance = &c{}
-var _ weaver.Instance = &app{}
+var _ weaver.InstanceOf[A] = &a{}
+var _ weaver.InstanceOf[B] = &b{}
+var _ weaver.InstanceOf[C] = &c{}
+var _ weaver.InstanceOf[weaver.Main] = &app{}
 
 // Local stub implementations.
 

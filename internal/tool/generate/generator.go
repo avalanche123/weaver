@@ -897,11 +897,14 @@ func (g *generator) generateVersionCheck(p printFn) {
 // implementation type implements weaver.Instance.
 func (g *generator) generateInstanceChecks(p printFn) {
 	// If someone deletes a weaver.Implements annotation and forgets to re-run
+	// `weaver generate`, these checks will fail to build. Similarly, if a user
+	// changes the interface in a weaver.Implements and forgets to re-run
 	// `weaver generate`, these checks will fail to build.
 	p(``)
 	p(`// weaver.Instance checks.`)
 	for _, c := range g.components {
-		p(`var _ %s = &%s{}`, g.weaver().qualify("Instance"), g.tset.genTypeString(c.impl))
+		// e.g., var _ weaver.InstanceOf[Odd] = &odd{}
+		p(`var _ %s[%s] = &%s{}`, g.weaver().qualify("InstanceOf"), g.tset.genTypeString(c.intf), g.tset.genTypeString(c.impl))
 	}
 }
 

@@ -29,7 +29,7 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &Server{}
+var _ weaver.InstanceOf[weaver.Main] = &Server{}
 
 // Local stub implementations.
 

@@ -48,8 +48,8 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &factorer{}
-var _ weaver.Instance = &server{}
+var _ weaver.InstanceOf[Factorer] = &factorer{}
+var _ weaver.InstanceOf[weaver.Main] = &server{}
 
 // Local stub implementations.
 

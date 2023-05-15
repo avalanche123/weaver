@@ -150,16 +150,16 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &ping1{}
-var _ weaver.Instance = &ping10{}
-var _ weaver.Instance = &ping2{}
-var _ weaver.Instance = &ping3{}
-var _ weaver.Instance = &ping4{}
-var _ weaver.Instance = &ping5{}
-var _ weaver.Instance = &ping6{}
-var _ weaver.Instance = &ping7{}
-var _ weaver.Instance = &ping8{}
-var _ weaver.Instance = &ping9{}
+var _ weaver.InstanceOf[Ping1] = &ping1{}
+var _ weaver.InstanceOf[Ping10] = &ping10{}
+var _ weaver.InstanceOf[Ping2] = &ping2{}
+var _ weaver.InstanceOf[Ping3] = &ping3{}
+var _ weaver.InstanceOf[Ping4] = &ping4{}
+var _ weaver.InstanceOf[Ping5] = &ping5{}
+var _ weaver.InstanceOf[Ping6] = &ping6{}
+var _ weaver.InstanceOf[Ping7] = &ping7{}
+var _ weaver.InstanceOf[Ping8] = &ping8{}
+var _ weaver.InstanceOf[Ping9] = &ping9{}
 
 // Local stub implementations.
 

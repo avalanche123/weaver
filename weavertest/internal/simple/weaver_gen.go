@@ -61,9 +61,9 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &destination{}
-var _ weaver.Instance = &server{}
-var _ weaver.Instance = &source{}
+var _ weaver.InstanceOf[Destination] = &destination{}
+var _ weaver.InstanceOf[Server] = &server{}
+var _ weaver.InstanceOf[Source] = &source{}
 
 // Local stub implementations.
 

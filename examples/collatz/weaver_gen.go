@@ -58,9 +58,9 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &even{}
-var _ weaver.Instance = &server{}
-var _ weaver.Instance = &odd{}
+var _ weaver.InstanceOf[Even] = &even{}
+var _ weaver.InstanceOf[weaver.Main] = &server{}
+var _ weaver.InstanceOf[Odd] = &odd{}
 
 // Local stub implementations.
 

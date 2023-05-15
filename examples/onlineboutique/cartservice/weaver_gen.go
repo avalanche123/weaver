@@ -49,8 +49,8 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &impl{}
-var _ weaver.Instance = &cartCacheImpl{}
+var _ weaver.InstanceOf[T] = &impl{}
+var _ weaver.InstanceOf[cartCache] = &cartCacheImpl{}
 
 // Local stub implementations.
 

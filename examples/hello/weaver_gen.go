@@ -47,8 +47,8 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &app{}
-var _ weaver.Instance = &reverser{}
+var _ weaver.InstanceOf[weaver.Main] = &app{}
+var _ weaver.InstanceOf[Reverser] = &reverser{}
 
 // Local stub implementations.
 

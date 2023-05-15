@@ -47,8 +47,8 @@ func init() {
 }
 
 // weaver.Instance checks.
-var _ weaver.Instance = &started{}
-var _ weaver.Instance = &widget{}
+var _ weaver.InstanceOf[Started] = &started{}
+var _ weaver.InstanceOf[Widget] = &widget{}
 
 // Local stub implementations.
 
