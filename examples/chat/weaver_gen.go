@@ -954,6 +954,14 @@ func (s sQLStore_server_stub) getImage(ctx context.Context, args []byte) (res []
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &Post{}
+var _ Post = struct {
+	weaver.AutoMarshal
+	ID      PostID
+	Creator string
+	When    time.Time
+	Text    string
+	ImageID ImageID
+}{}
 
 func (x *Post) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -978,6 +986,11 @@ func (x *Post) WeaverUnmarshal(dec *codegen.Decoder) {
 }
 
 var _ codegen.AutoMarshal = &Thread{}
+var _ Thread = struct {
+	weaver.AutoMarshal
+	ID    ThreadID
+	Posts []Post
+}{}
 
 func (x *Thread) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

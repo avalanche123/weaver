@@ -176,6 +176,13 @@ func (s t_server_stub) charge(ctx context.Context, args []byte) (res []byte, err
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &CreditCardInfo{}
+var _ CreditCardInfo = struct {
+	weaver.AutoMarshal
+	Number          string
+	CVV             int32
+	ExpirationYear  int
+	ExpirationMonth time.Month
+}{}
 
 func (x *CreditCardInfo) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

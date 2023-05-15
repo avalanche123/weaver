@@ -1664,9 +1664,29 @@ func (g *generator) generateAutoMarshalMethods(p printFn) {
 		var innerTypes []types.Type
 		s := t.Underlying().(*types.Struct)
 
-		// Generate AutoMarshal assertion.
+		// Generate AutoMarshal assertion. For example, consider the following
+		// Pair type:
+		//
+		//     type Pair struct {
+		//         weaver.AutoMarshal
+		//         x int
+		//         y int
+		//     }
+		//
+		// We generate the following code:
+		//
+		//     var _ weaver.AutoMarshal = &pair{}
+		//     var _ Pair = struct{
+		//         weaver.AutoMarshal
+		//         x int
+		//         y int
+		//     }{}
+		//
+		// These checks ensure that if a user changes the Pair struct and
+		// forgets to re-run "weaver generate", the app will not build.
 		p(``)
 		p(`var _ %s = &%s{}`, g.codegen().qualify("AutoMarshal"), ts(t))
+		p(`var _ %s = %s{}`, ts(t), ts(s))
 
 		// Generate WeaverMarshal method.
 		fmt := g.tset.importPackage("fmt", "fmt")

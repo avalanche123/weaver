@@ -2540,6 +2540,11 @@ func (s ping9_server_stub) pingS(ctx context.Context, args []byte) (res []byte, 
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &X1{}
+var _ X1 = struct {
+	weaver.AutoMarshal
+	A X2
+	B []int64
+}{}
 
 func (x *X1) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -2581,6 +2586,10 @@ func serviceweaver_dec_slice_int64_a8f7f092(dec *codegen.Decoder) []int64 {
 }
 
 var _ codegen.AutoMarshal = &X2{}
+var _ X2 = struct {
+	weaver.AutoMarshal
+	A X3
+}{}
 
 func (x *X2) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -2597,6 +2606,12 @@ func (x *X2) WeaverUnmarshal(dec *codegen.Decoder) {
 }
 
 var _ codegen.AutoMarshal = &X3{}
+var _ X3 = struct {
+	weaver.AutoMarshal
+	A X4
+	B int64
+	C int64
+}{}
 
 func (x *X3) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -2617,6 +2632,12 @@ func (x *X3) WeaverUnmarshal(dec *codegen.Decoder) {
 }
 
 var _ codegen.AutoMarshal = &X4{}
+var _ X4 = struct {
+	weaver.AutoMarshal
+	A int64
+	B X5
+	C int64
+}{}
 
 func (x *X4) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -2637,6 +2658,11 @@ func (x *X4) WeaverUnmarshal(dec *codegen.Decoder) {
 }
 
 var _ codegen.AutoMarshal = &X5{}
+var _ X5 = struct {
+	weaver.AutoMarshal
+	A int64
+	B int64
+}{}
 
 func (x *X5) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -2655,6 +2681,10 @@ func (x *X5) WeaverUnmarshal(dec *codegen.Decoder) {
 }
 
 var _ codegen.AutoMarshal = &X6{}
+var _ X6 = struct {
+	weaver.AutoMarshal
+	A []bool
+}{}
 
 func (x *X6) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -2694,6 +2724,20 @@ func serviceweaver_dec_slice_bool_c791c3b0(dec *codegen.Decoder) []bool {
 }
 
 var _ codegen.AutoMarshal = &payloadC{}
+var _ payloadC = struct {
+	weaver.AutoMarshal
+	A float64
+	B string
+	C int64
+	D X1
+	E string
+	F int64
+	G X6
+	H string
+	I int64
+	J float32
+	K string
+}{}
 
 func (x *payloadC) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
@@ -2730,6 +2774,10 @@ func (x *payloadC) WeaverUnmarshal(dec *codegen.Decoder) {
 }
 
 var _ codegen.AutoMarshal = &payloadS{}
+var _ payloadS = struct {
+	weaver.AutoMarshal
+	Values []string
+}{}
 
 func (x *payloadS) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

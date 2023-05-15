@@ -443,6 +443,11 @@ func (s pointer_server_stub) get(ctx context.Context, args []byte) (res []byte, 
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &Pair{}
+var _ Pair = struct {
+	weaver.AutoMarshal
+	X *int
+	Y *int
+}{}
 
 func (x *Pair) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

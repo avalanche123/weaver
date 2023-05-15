@@ -746,6 +746,11 @@ func (s cartCache_server_stub) remove(ctx context.Context, args []byte) (res []b
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &CartItem{}
+var _ CartItem = struct {
+	weaver.AutoMarshal
+	ProductID string
+	Quantity  int32
+}{}
 
 func (x *CartItem) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {

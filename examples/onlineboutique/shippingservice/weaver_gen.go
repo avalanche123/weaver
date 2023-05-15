@@ -277,6 +277,14 @@ func (s t_server_stub) shipOrder(ctx context.Context, args []byte) (res []byte, 
 // AutoMarshal implementations.
 
 var _ codegen.AutoMarshal = &Address{}
+var _ Address = struct {
+	weaver.AutoMarshal
+	StreetAddress string
+	City          string
+	State         string
+	Country       string
+	ZipCode       int32
+}{}
 
 func (x *Address) WeaverMarshal(enc *codegen.Encoder) {
 	if x == nil {
