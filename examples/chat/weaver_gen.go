@@ -680,7 +680,7 @@ type imageScaler_server_stub struct {
 // Check that imageScaler_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &imageScaler_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s imageScaler_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Scale":
@@ -727,7 +727,7 @@ type localCache_server_stub struct {
 // Check that localCache_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &localCache_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s localCache_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Get":
@@ -798,7 +798,7 @@ type main_server_stub struct {
 // Check that main_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &main_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s main_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	default:
@@ -814,7 +814,7 @@ type sQLStore_server_stub struct {
 // Check that sQLStore_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &sQLStore_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s sQLStore_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "CreatePost":

@@ -135,7 +135,7 @@ type a_server_stub struct {
 // Check that a_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &a_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s a_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	default:
@@ -151,7 +151,7 @@ type b_server_stub struct {
 // Check that b_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &b_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s b_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	default:
@@ -167,7 +167,7 @@ type c_server_stub struct {
 // Check that c_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &c_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s c_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	default:
@@ -183,7 +183,7 @@ type main_server_stub struct {
 // Check that main_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &main_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s main_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	default:

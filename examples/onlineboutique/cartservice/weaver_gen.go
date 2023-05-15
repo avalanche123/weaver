@@ -546,7 +546,7 @@ type t_server_stub struct {
 // Check that t_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &t_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s t_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "AddItem":
@@ -643,7 +643,7 @@ type cartCache_server_stub struct {
 // Check that cartCache_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &cartCache_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s cartCache_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Add":

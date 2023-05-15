@@ -1793,7 +1793,7 @@ type ping1_server_stub struct {
 // Check that ping1_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping1_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping1_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -1867,7 +1867,7 @@ type ping10_server_stub struct {
 // Check that ping10_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping10_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping10_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -1941,7 +1941,7 @@ type ping2_server_stub struct {
 // Check that ping2_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping2_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping2_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -2015,7 +2015,7 @@ type ping3_server_stub struct {
 // Check that ping3_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping3_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping3_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -2089,7 +2089,7 @@ type ping4_server_stub struct {
 // Check that ping4_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping4_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping4_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -2163,7 +2163,7 @@ type ping5_server_stub struct {
 // Check that ping5_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping5_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping5_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -2237,7 +2237,7 @@ type ping6_server_stub struct {
 // Check that ping6_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping6_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping6_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -2311,7 +2311,7 @@ type ping7_server_stub struct {
 // Check that ping7_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping7_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping7_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -2385,7 +2385,7 @@ type ping8_server_stub struct {
 // Check that ping8_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping8_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping8_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":
@@ -2459,7 +2459,7 @@ type ping9_server_stub struct {
 // Check that ping9_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &ping9_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s ping9_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "PingC":

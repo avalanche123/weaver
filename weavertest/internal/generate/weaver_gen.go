@@ -214,7 +214,7 @@ type testApp_server_stub struct {
 // Check that testApp_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &testApp_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s testApp_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Get":

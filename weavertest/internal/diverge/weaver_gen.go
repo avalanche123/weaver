@@ -326,7 +326,7 @@ type errer_server_stub struct {
 // Check that errer_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &errer_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s errer_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Err":
@@ -368,7 +368,7 @@ type failer_server_stub struct {
 // Check that failer_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &failer_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s failer_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "ImJustHereSoWeaverGenerateDoesntComplain":
@@ -405,7 +405,7 @@ type pointer_server_stub struct {
 // Check that pointer_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &pointer_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s pointer_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Get":

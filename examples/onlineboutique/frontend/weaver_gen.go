@@ -57,7 +57,7 @@ type main_server_stub struct {
 // Check that main_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &main_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s main_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	default:

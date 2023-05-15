@@ -1520,7 +1520,7 @@ func (g *generator) generateServerStubs(p printFn) {
 		p(`var _ %s = &%s{}`, g.codegen().qualify("Server"), stub)
 		p(``)
 
-		p(`// GetStubFn implements the stub.Server interface.`)
+		p(`// GetStubFn implements the codegen.Server interface.`)
 		p(`func (s %s) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {`, stub)
 		p(`	switch method {`)
 		for _, m := range comp.methods() {

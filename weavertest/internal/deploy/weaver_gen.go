@@ -238,7 +238,7 @@ type started_server_stub struct {
 // Check that started_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &started_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s started_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "MarkStarted":
@@ -280,7 +280,7 @@ type widget_server_stub struct {
 // Check that widget_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &widget_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s widget_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Use":

@@ -692,7 +692,7 @@ type destination_server_stub struct {
 // Check that destination_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &destination_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s destination_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "GetAll":
@@ -815,7 +815,7 @@ type server_server_stub struct {
 // Check that server_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &server_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s server_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Address":
@@ -896,7 +896,7 @@ type source_server_stub struct {
 // Check that source_server_stub implements the codegen.Server interface.
 var _ codegen.Server = &source_server_stub{}
 
-// GetStubFn implements the stub.Server interface.
+// GetStubFn implements the codegen.Server interface.
 func (s source_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
 	case "Emit":
