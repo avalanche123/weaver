@@ -78,6 +78,12 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &scaler{}
+var _ weaver.Instance = &localCache{}
+var _ weaver.Instance = &server{}
+var _ weaver.Instance = &sqlStore{}
+
 // Local stub implementations.
 
 type imageScaler_local_stub struct {

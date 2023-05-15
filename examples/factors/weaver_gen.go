@@ -47,6 +47,10 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &factorer{}
+var _ weaver.Instance = &server{}
+
 // Local stub implementations.
 
 type factorer_local_stub struct {

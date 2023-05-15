@@ -57,6 +57,11 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &even{}
+var _ weaver.Instance = &server{}
+var _ weaver.Instance = &odd{}
+
 // Local stub implementations.
 
 type even_local_stub struct {

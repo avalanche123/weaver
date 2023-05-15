@@ -33,6 +33,9 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &impl{}
+
 // Local stub implementations.
 
 type t_local_stub struct {

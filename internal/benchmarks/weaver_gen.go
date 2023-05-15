@@ -149,6 +149,18 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &ping1{}
+var _ weaver.Instance = &ping10{}
+var _ weaver.Instance = &ping2{}
+var _ weaver.Instance = &ping3{}
+var _ weaver.Instance = &ping4{}
+var _ weaver.Instance = &ping5{}
+var _ weaver.Instance = &ping6{}
+var _ weaver.Instance = &ping7{}
+var _ weaver.Instance = &ping8{}
+var _ weaver.Instance = &ping9{}
+
 // Local stub implementations.
 
 type ping1_local_stub struct {

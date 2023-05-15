@@ -48,6 +48,10 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &impl{}
+var _ weaver.Instance = &cartCacheImpl{}
+
 // Local stub implementations.
 
 type t_local_stub struct {

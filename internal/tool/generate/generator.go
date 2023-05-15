@@ -784,6 +784,7 @@ func (g *generator) generate() error {
 		}
 		g.generateVersionCheck(fn)
 		g.generateRegisteredComponents(fn)
+		g.generateInstanceChecks(fn)
 		g.generateLocalStubs(fn)
 		g.generateClientStubs(fn)
 		g.generateServerStubs(fn)
@@ -890,6 +891,18 @@ func (g *generator) generateVersionCheck(p printFn) {
 		codegen.Major, codegen.Minor,
 		fmt.Sprintf(`You used 'weaver generate' codegen version %d.%d.0, but you built your code with an incompatible weaver module version. Try upgrading 'weaver generate' and re-running it.`, codegen.Major, codegen.Minor),
 	)
+}
+
+// generateInstanceChecks generates code that checks that every component
+// implementation type implements weaver.Instance.
+func (g *generator) generateInstanceChecks(p printFn) {
+	// If someone deletes a weaver.Implements annotation and forgets to re-run
+	// `weaver generate`, these checks will fail to build.
+	p(``)
+	p(`// weaver.Instance checks.`)
+	for _, c := range g.components {
+		p(`var _ %s = &%s{}`, g.weaver().qualify("Instance"), g.tset.genTypeString(c.impl))
+	}
 }
 
 // generateRegisteredComponents generates code that registers the components with Service Weaver.

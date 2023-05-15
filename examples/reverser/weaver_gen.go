@@ -46,6 +46,10 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &server{}
+var _ weaver.Instance = &reverser{}
+
 // Local stub implementations.
 
 type main_local_stub struct {

@@ -28,6 +28,9 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &app{}
+
 // Local stub implementations.
 
 type main_local_stub struct {

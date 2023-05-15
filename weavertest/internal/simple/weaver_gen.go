@@ -60,6 +60,11 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &destination{}
+var _ weaver.Instance = &server{}
+var _ weaver.Instance = &source{}
+
 // Local stub implementations.
 
 type destination_local_stub struct {

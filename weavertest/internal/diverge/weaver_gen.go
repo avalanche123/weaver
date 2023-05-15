@@ -60,6 +60,11 @@ func init() {
 	})
 }
 
+// weaver.Instance checks.
+var _ weaver.Instance = &errer{}
+var _ weaver.Instance = &failer{}
+var _ weaver.Instance = &pointer{}
+
 // Local stub implementations.
 
 type errer_local_stub struct {
