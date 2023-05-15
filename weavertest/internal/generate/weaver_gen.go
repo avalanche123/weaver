@@ -40,6 +40,9 @@ type testApp_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that testApp_local_stub implements the testApp interface.
+var _ testApp = &testApp_local_stub{}
+
 func (s testApp_local_stub) Get(ctx context.Context, a0 string, a1 behaviorType) (r0 int, err error) {
 	span := trace.SpanFromContext(ctx)
 	if span.SpanContext().IsValid() {
@@ -81,6 +84,9 @@ type testApp_client_stub struct {
 	getMetrics        *codegen.MethodMetrics
 	incPointerMetrics *codegen.MethodMetrics
 }
+
+// Check that testApp_client_stub implements the testApp interface.
+var _ testApp = &testApp_client_stub{}
 
 func (s testApp_client_stub) Get(ctx context.Context, a0 string, a1 behaviorType) (r0 int, err error) {
 	// Update metrics.
@@ -204,6 +210,9 @@ type testApp_server_stub struct {
 	impl    testApp
 	addLoad func(key uint64, load float64)
 }
+
+// Check that testApp_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &testApp_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s testApp_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

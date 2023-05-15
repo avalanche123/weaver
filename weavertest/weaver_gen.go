@@ -34,11 +34,17 @@ type testMainInterface_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that testMainInterface_local_stub implements the testMainInterface interface.
+var _ testMainInterface = &testMainInterface_local_stub{}
+
 // Client stub implementations.
 
 type testMainInterface_client_stub struct {
 	stub codegen.Stub
 }
+
+// Check that testMainInterface_client_stub implements the testMainInterface interface.
+var _ testMainInterface = &testMainInterface_client_stub{}
 
 // Server stub implementations.
 
@@ -46,6 +52,9 @@ type testMainInterface_server_stub struct {
 	impl    testMainInterface
 	addLoad func(key uint64, load float64)
 }
+
+// Check that testMainInterface_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &testMainInterface_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s testMainInterface_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

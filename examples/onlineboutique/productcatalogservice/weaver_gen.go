@@ -39,6 +39,9 @@ type t_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that t_local_stub implements the T interface.
+var _ T = &t_local_stub{}
+
 func (s t_local_stub) GetProduct(ctx context.Context, a0 string) (r0 Product, err error) {
 	span := trace.SpanFromContext(ctx)
 	if span.SpanContext().IsValid() {
@@ -98,6 +101,9 @@ type t_client_stub struct {
 	listProductsMetrics   *codegen.MethodMetrics
 	searchProductsMetrics *codegen.MethodMetrics
 }
+
+// Check that t_client_stub implements the T interface.
+var _ T = &t_client_stub{}
 
 func (s t_client_stub) GetProduct(ctx context.Context, a0 string) (r0 Product, err error) {
 	// Update metrics.
@@ -268,6 +274,9 @@ type t_server_stub struct {
 	impl    T
 	addLoad func(key uint64, load float64)
 }
+
+// Check that t_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &t_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s t_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

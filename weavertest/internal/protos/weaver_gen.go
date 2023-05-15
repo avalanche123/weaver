@@ -40,6 +40,9 @@ type pingPonger_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that pingPonger_local_stub implements the PingPonger interface.
+var _ PingPonger = &pingPonger_local_stub{}
+
 func (s pingPonger_local_stub) Ping(ctx context.Context, a0 *Ping) (r0 *Pong, err error) {
 	span := trace.SpanFromContext(ctx)
 	if span.SpanContext().IsValid() {
@@ -63,6 +66,9 @@ type pingPonger_client_stub struct {
 	stub        codegen.Stub
 	pingMetrics *codegen.MethodMetrics
 }
+
+// Check that pingPonger_client_stub implements the PingPonger interface.
+var _ PingPonger = &pingPonger_client_stub{}
 
 func (s pingPonger_client_stub) Ping(ctx context.Context, a0 *Ping) (r0 *Pong, err error) {
 	// Update metrics.
@@ -122,6 +128,9 @@ type pingPonger_server_stub struct {
 	impl    PingPonger
 	addLoad func(key uint64, load float64)
 }
+
+// Check that pingPonger_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &pingPonger_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s pingPonger_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

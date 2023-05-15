@@ -53,6 +53,9 @@ type started_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that started_local_stub implements the Started interface.
+var _ Started = &started_local_stub{}
+
 func (s started_local_stub) MarkStarted(ctx context.Context, a0 string) (err error) {
 	span := trace.SpanFromContext(ctx)
 	if span.SpanContext().IsValid() {
@@ -74,6 +77,9 @@ type widget_local_stub struct {
 	impl   Widget
 	tracer trace.Tracer
 }
+
+// Check that widget_local_stub implements the Widget interface.
+var _ Widget = &widget_local_stub{}
 
 func (s widget_local_stub) Use(ctx context.Context, a0 string) (err error) {
 	span := trace.SpanFromContext(ctx)
@@ -98,6 +104,9 @@ type started_client_stub struct {
 	stub               codegen.Stub
 	markStartedMetrics *codegen.MethodMetrics
 }
+
+// Check that started_client_stub implements the Started interface.
+var _ Started = &started_client_stub{}
 
 func (s started_client_stub) MarkStarted(ctx context.Context, a0 string) (err error) {
 	// Update metrics.
@@ -159,6 +168,9 @@ type widget_client_stub struct {
 	stub       codegen.Stub
 	useMetrics *codegen.MethodMetrics
 }
+
+// Check that widget_client_stub implements the Widget interface.
+var _ Widget = &widget_client_stub{}
 
 func (s widget_client_stub) Use(ctx context.Context, a0 string) (err error) {
 	// Update metrics.
@@ -223,6 +235,9 @@ type started_server_stub struct {
 	addLoad func(key uint64, load float64)
 }
 
+// Check that started_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &started_server_stub{}
+
 // GetStubFn implements the stub.Server interface.
 func (s started_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
@@ -261,6 +276,9 @@ type widget_server_stub struct {
 	impl    Widget
 	addLoad func(key uint64, load float64)
 }
+
+// Check that widget_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &widget_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s widget_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

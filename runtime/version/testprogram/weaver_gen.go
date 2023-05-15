@@ -35,11 +35,17 @@ type main_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that main_local_stub implements the weaver.Main interface.
+var _ weaver.Main = &main_local_stub{}
+
 // Client stub implementations.
 
 type main_client_stub struct {
 	stub codegen.Stub
 }
+
+// Check that main_client_stub implements the weaver.Main interface.
+var _ weaver.Main = &main_client_stub{}
 
 // Server stub implementations.
 
@@ -47,6 +53,9 @@ type main_server_stub struct {
 	impl    weaver.Main
 	addLoad func(key uint64, load float64)
 }
+
+// Check that main_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &main_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s main_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

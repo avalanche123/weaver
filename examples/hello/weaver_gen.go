@@ -53,10 +53,16 @@ type main_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that main_local_stub implements the weaver.Main interface.
+var _ weaver.Main = &main_local_stub{}
+
 type reverser_local_stub struct {
 	impl   Reverser
 	tracer trace.Tracer
 }
+
+// Check that reverser_local_stub implements the Reverser interface.
+var _ Reverser = &reverser_local_stub{}
 
 func (s reverser_local_stub) Reverse(ctx context.Context, a0 string) (r0 string, err error) {
 	span := trace.SpanFromContext(ctx)
@@ -81,10 +87,16 @@ type main_client_stub struct {
 	stub codegen.Stub
 }
 
+// Check that main_client_stub implements the weaver.Main interface.
+var _ weaver.Main = &main_client_stub{}
+
 type reverser_client_stub struct {
 	stub           codegen.Stub
 	reverseMetrics *codegen.MethodMetrics
 }
+
+// Check that reverser_client_stub implements the Reverser interface.
+var _ Reverser = &reverser_client_stub{}
 
 func (s reverser_client_stub) Reverse(ctx context.Context, a0 string) (r0 string, err error) {
 	// Update metrics.
@@ -150,6 +162,9 @@ type main_server_stub struct {
 	addLoad func(key uint64, load float64)
 }
 
+// Check that main_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &main_server_stub{}
+
 // GetStubFn implements the stub.Server interface.
 func (s main_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
@@ -162,6 +177,9 @@ type reverser_server_stub struct {
 	impl    Reverser
 	addLoad func(key uint64, load float64)
 }
+
+// Check that reverser_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &reverser_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s reverser_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

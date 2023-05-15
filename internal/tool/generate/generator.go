@@ -975,6 +975,12 @@ func (g *generator) generateLocalStubs(p printFn) {
 		p(`	impl %s`, g.componentRef(comp))
 		p(`	tracer %s`, g.trace().qualify("Tracer"))
 		p(`}`)
+
+		p(``)
+		p(`// Check that %s implements the %s interface.`, stub, g.tset.genTypeString(comp.intf))
+		p(`var _ %s = &%s{}`, g.tset.genTypeString(comp.intf), stub)
+		p(``)
+
 		for _, m := range comp.methods() {
 			mt := m.Type().(*types.Signature)
 			p(``)
@@ -1028,6 +1034,11 @@ func (g *generator) generateClientStubs(p printFn) {
 			p(`	%sMetrics *%s`, notExported(m.Name()), g.codegen().qualify("MethodMetrics"))
 		}
 		p(`}`)
+
+		p(``)
+		p(`// Check that %s implements the %s interface.`, stub, g.tset.genTypeString(comp.intf))
+		p(`var _ %s = &%s{}`, g.tset.genTypeString(comp.intf), stub)
+		p(``)
 
 		// Assign method indices in sorted order.
 		mlist := make([]string, len(comp.methods()))
@@ -1504,6 +1515,11 @@ func (g *generator) generateServerStubs(p printFn) {
 		p(`	addLoad func(key uint64, load float64)`)
 		p(`}`)
 		p(``)
+
+		p(`// Check that %s implements the %s interface.`, stub, g.codegen().qualify("Server"))
+		p(`var _ %s = &%s{}`, g.codegen().qualify("Server"), stub)
+		p(``)
+
 		p(`// GetStubFn implements the stub.Server interface.`)
 		p(`func (s %s) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {`, stub)
 		p(`	switch method {`)

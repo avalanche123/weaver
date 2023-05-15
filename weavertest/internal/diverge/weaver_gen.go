@@ -67,6 +67,9 @@ type errer_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that errer_local_stub implements the Errer interface.
+var _ Errer = &errer_local_stub{}
+
 func (s errer_local_stub) Err(ctx context.Context, a0 int) (err error) {
 	span := trace.SpanFromContext(ctx)
 	if span.SpanContext().IsValid() {
@@ -89,6 +92,9 @@ type failer_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that failer_local_stub implements the Failer interface.
+var _ Failer = &failer_local_stub{}
+
 func (s failer_local_stub) ImJustHereSoWeaverGenerateDoesntComplain(ctx context.Context) (err error) {
 	span := trace.SpanFromContext(ctx)
 	if span.SpanContext().IsValid() {
@@ -110,6 +116,9 @@ type pointer_local_stub struct {
 	impl   Pointer
 	tracer trace.Tracer
 }
+
+// Check that pointer_local_stub implements the Pointer interface.
+var _ Pointer = &pointer_local_stub{}
 
 func (s pointer_local_stub) Get(ctx context.Context) (r0 Pair, err error) {
 	span := trace.SpanFromContext(ctx)
@@ -134,6 +143,9 @@ type errer_client_stub struct {
 	stub       codegen.Stub
 	errMetrics *codegen.MethodMetrics
 }
+
+// Check that errer_client_stub implements the Errer interface.
+var _ Errer = &errer_client_stub{}
 
 func (s errer_client_stub) Err(ctx context.Context, a0 int) (err error) {
 	// Update metrics.
@@ -196,6 +208,9 @@ type failer_client_stub struct {
 	imJustHereSoWeaverGenerateDoesntComplainMetrics *codegen.MethodMetrics
 }
 
+// Check that failer_client_stub implements the Failer interface.
+var _ Failer = &failer_client_stub{}
+
 func (s failer_client_stub) ImJustHereSoWeaverGenerateDoesntComplain(ctx context.Context) (err error) {
 	// Update metrics.
 	start := time.Now()
@@ -248,6 +263,9 @@ type pointer_client_stub struct {
 	stub       codegen.Stub
 	getMetrics *codegen.MethodMetrics
 }
+
+// Check that pointer_client_stub implements the Pointer interface.
+var _ Pointer = &pointer_client_stub{}
 
 func (s pointer_client_stub) Get(ctx context.Context) (r0 Pair, err error) {
 	// Update metrics.
@@ -305,6 +323,9 @@ type errer_server_stub struct {
 	addLoad func(key uint64, load float64)
 }
 
+// Check that errer_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &errer_server_stub{}
+
 // GetStubFn implements the stub.Server interface.
 func (s errer_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
@@ -344,6 +365,9 @@ type failer_server_stub struct {
 	addLoad func(key uint64, load float64)
 }
 
+// Check that failer_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &failer_server_stub{}
+
 // GetStubFn implements the stub.Server interface.
 func (s failer_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
@@ -377,6 +401,9 @@ type pointer_server_stub struct {
 	impl    Pointer
 	addLoad func(key uint64, load float64)
 }
+
+// Check that pointer_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &pointer_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s pointer_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {

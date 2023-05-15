@@ -55,6 +55,9 @@ type t_local_stub struct {
 	tracer trace.Tracer
 }
 
+// Check that t_local_stub implements the T interface.
+var _ T = &t_local_stub{}
+
 func (s t_local_stub) AddItem(ctx context.Context, a0 string, a1 CartItem) (err error) {
 	span := trace.SpanFromContext(ctx)
 	if span.SpanContext().IsValid() {
@@ -110,6 +113,9 @@ type cartCache_local_stub struct {
 	impl   cartCache
 	tracer trace.Tracer
 }
+
+// Check that cartCache_local_stub implements the cartCache interface.
+var _ cartCache = &cartCache_local_stub{}
 
 func (s cartCache_local_stub) Add(ctx context.Context, a0 string, a1 []CartItem) (err error) {
 	span := trace.SpanFromContext(ctx)
@@ -170,6 +176,9 @@ type t_client_stub struct {
 	emptyCartMetrics *codegen.MethodMetrics
 	getCartMetrics   *codegen.MethodMetrics
 }
+
+// Check that t_client_stub implements the T interface.
+var _ T = &t_client_stub{}
 
 func (s t_client_stub) AddItem(ctx context.Context, a0 string, a1 CartItem) (err error) {
 	// Update metrics.
@@ -348,6 +357,9 @@ type cartCache_client_stub struct {
 	getMetrics    *codegen.MethodMetrics
 	removeMetrics *codegen.MethodMetrics
 }
+
+// Check that cartCache_client_stub implements the cartCache interface.
+var _ cartCache = &cartCache_client_stub{}
 
 func (s cartCache_client_stub) Add(ctx context.Context, a0 string, a1 []CartItem) (err error) {
 	// Update metrics.
@@ -531,6 +543,9 @@ type t_server_stub struct {
 	addLoad func(key uint64, load float64)
 }
 
+// Check that t_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &t_server_stub{}
+
 // GetStubFn implements the stub.Server interface.
 func (s t_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
 	switch method {
@@ -624,6 +639,9 @@ type cartCache_server_stub struct {
 	impl    cartCache
 	addLoad func(key uint64, load float64)
 }
+
+// Check that cartCache_server_stub implements the codegen.Server interface.
+var _ codegen.Server = &cartCache_server_stub{}
 
 // GetStubFn implements the stub.Server interface.
 func (s cartCache_server_stub) GetStubFn(method string) func(ctx context.Context, args []byte) ([]byte, error) {
